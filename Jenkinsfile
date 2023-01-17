@@ -8,13 +8,13 @@ pipeline {
         }
         stage("Build") {
             steps {
-                sh "docker build -t node-docker ."
+                sh "docker build -t 20127090/node-docker ."
             }
         }
         stage("Push") {
             steps {
                 withDockerRegistry(credentialsId: 'docker', url: 'https://index.docker.io/v1/') {
-                    sh "docker push node-docker:latest"
+                    sh "docker push 20127090/node-docker:latest"
                 }
             }
         }
