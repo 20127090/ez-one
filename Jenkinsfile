@@ -18,7 +18,11 @@ pipeline {
                 }
             }
         }
+        stage("Deploy") {
+            steps {
+                sh "docker run --publish 8000:8000 node-docker"
+            }
+        }
     }
 
-  }
 }
