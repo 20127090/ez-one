@@ -11,5 +11,12 @@ pipeline {
                 sh "docker build -t node-docker ."
             }
         }
+        stage("Push") {
+            steps {
+                withDockerRegistry(credentialsId: 'docker', url: 'https://index.docker.io/v1/') {
+                    sh "docker push node-docer:latest"
+                }
+            }
+        }
     }
 }
