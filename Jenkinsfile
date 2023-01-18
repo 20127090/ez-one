@@ -23,6 +23,12 @@ pipeline {
                 sh "docker run -d --name node-server --publish 8000:8000 20127090/node-docker:latest"
             }
         }
+        stage("Ping") {
+            steps {
+                def ping = "curl --request POST --url http://localhost:8000/test --header 'content-type: application/json' --data '{" + "msg" + ":" + " testing" + "}"
+                sh ping
+            }
+        }
     }
 
 }
