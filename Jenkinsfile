@@ -20,7 +20,7 @@ pipeline {
         }
         stage("Deploy") {
             steps {
-                sh "docker run --publish 8000:8000 node-docker"
+                sh "docker run -d --name node-server --publish 8000:8000 20127090/node-docker:latest"
             }
         }
     }
