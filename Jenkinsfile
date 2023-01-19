@@ -21,6 +21,11 @@ pipeline {
         stage("Deploy") {
             steps {
                 sh "docker start node-server || docker run -d --name node-server --publish 8000:8000 20127090/node-docker:latest"
+            }
+        }
+        stage("Test") {
+            steps {
+                sh "docker exec -it node-server bash"
                 sh "curl http://localhost:8000/test"
             }
         }
