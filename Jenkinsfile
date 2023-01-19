@@ -20,7 +20,7 @@ pipeline {
         }
         stage("Deploy") {
             steps {
-                sh "docker start 20127090/node-docker || docker run -d --name node-server --publish 8000:8000 20127090/node-docker:latest"
+                sh "docker start node-server || docker run -d --name node-server --publish 8000:8000 20127090/node-docker:latest"
             }
         }
         stage("Ping") {
