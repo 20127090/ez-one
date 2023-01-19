@@ -25,7 +25,7 @@ pipeline {
         }
         stage("Test") {
             steps {
-                sh "docker exec -it node-server curl http://localhost:8000/test"
+                sh "docker exec --tty node-server curl http://localhost:8000/test"
             }
         }
     }
